@@ -1,0 +1,155 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Wizard wrapper ─────────────────────────────────────── */
+.wizard-wrapper {
+  width: 100%;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 20px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ── Step indicator ─────────────────────────────────────── */
+.step-indicator {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 28px 0 12px;
+}
+
+/* Each item = dot-with-label + optional connector line */
+.step-item {
+  display: flex;
+  align-items: flex-start;
+}
+
+/* The column holding dot + label */
+.step-dot-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-dot {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border: 2px solid var(--glass-border);
+  background: var(--glass-bg);
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.step-dot.active {
+  border-color: var(--accent-1);
+  background: rgba(124, 86, 255, 0.15);
+  box-shadow: 0 0 0 6px rgba(124, 86, 255, 0.12), 0 0 24px rgba(124, 86, 255, 0.35);
+  font-size: 1.6rem;
+}
+
+.step-dot.done {
+  border-color: var(--success);
+  background: rgba(0, 229, 160, 0.12);
+  color: var(--success);
+  font-size: 1.2rem;
+  box-shadow: 0 0 12px rgba(0, 229, 160, 0.25);
+}
+
+.step-dot.pending {
+  opacity: 0.4;
+}
+
+.step-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.step-label.active-label {
+  color: var(--accent-1);
+}
+
+/* connector line between step items — vertically centered on the dot */
+.step-line-wrapper {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 27px; /* visually center line against 56px dot */
+}
+
+.step-line {
+  width: 56px;
+  height: 2px;
+  background: var(--glass-border);
+  border-radius: 2px;
+  transition: background 0.4s ease;
+}
+
+.step-line.done {
+  background: var(--success);
+  box-shadow: 0 0 8px rgba(0, 229, 160, 0.4);
+}
+
+/* ── Step content area ──────────────────────────────────── */
+.step-content {
+  animation: fadeSlide 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Bottom navigation ──────────────────────────────────── */
+.wizard-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+}
+
+.step-counter {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+  .wizard-wrapper {
+    padding: 0 12px 60px;
+    gap: 20px;
+  }
+  .step-line {
+    width: 28px;
+  }
+  .step-dot {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+  .step-label {
+    font-size: 0.68rem;
+  }
+  .wizard-nav {
+    padding: 16px 16px;
+  }
+}
