@@ -18,16 +18,31 @@
   background: var(--accent-gradient-2);
 }
 
+.preview-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.preview-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .preview-label {
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 28px;
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 0;
 }
 
 .preview-label::after {
@@ -182,11 +197,103 @@
   padding: 16px;
 }
 
+/* Photo */
+.cv-photo-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.cv-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid rgba(255,255,255,0.2);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Summary in preview */
+.cv-summary {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+  margin-bottom: 8px;
+  max-width: 600px;
+}
+
+.cv-summary-body {
+  font-size: 0.97rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  padding: 12px 0;
+}
+
+/* Skills grid in preview */
+.cv-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 14px;
+}
+
+.cv-skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.03);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.cv-skill-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 80px;
+}
+
+.cv-skill-bar-bg {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.cv-skill-bar-fill {
+  height: 100%;
+  background: var(--accent-gradient);
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cv-skill-level {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
 @media (max-width: 600px) {
   .cv-preview-wrapper {
     padding: 20px 16px;
   }
   .cv-doc-header, .cv-doc-body {
     padding: 20px 16px;
+  }
+  .preview-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .preview-actions-right {
+    justify-content: stretch;
+  }
+  .preview-actions-right .btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .cv-skills-grid {
+    grid-template-columns: 1fr;
   }
 }
